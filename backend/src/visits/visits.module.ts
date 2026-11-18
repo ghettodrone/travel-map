@@ -4,6 +4,7 @@ import { VisitsService } from './visits.service.js';
 
 @Module({
   controllers: [VisitsController],
-  providers: [VisitsService]
+  providers: [VisitsService],
+  exports: [VisitsService],
 })
 export class VisitsModule {}

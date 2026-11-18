@@ -5,12 +5,14 @@ import { CreateTripDto } from './dto/create-trip.dto.js';
 import { CurrentUser } from '../auth/decorators/current-user.decorator.js';
 import type { AuthUser } from '../auth/interfaces/auth-user.interface.js';
 import { UpdateTripDto } from './dto/update-trip.dto.js';
+import { VisitsService } from '../visits/visits.service.js';
 
 @Controller('trips')
 @UseGuards(JwtAuthGuard)
 export class TripsController {
-    constructor(private readonly tripsService: TripsService){
-
+    constructor(
+        private readonly tripsService: TripsService,
+        private readonly visitsService: VisitsService,){
     }
 
     @Post()
@@ -49,9 +51,17 @@ export class TripsController {
 
     @Delete(':id')
     remove(
-    @Param('id', new ParseUUIDPipe()) id: string,
-    @CurrentUser() user: AuthUser,
+        @Param('id', new ParseUUIDPipe()) id: string,
+        @CurrentUser() user: AuthUser,
+    ){
+        return this.tripsService.delete(id, user.userId);
+    }
+
+    @Get(':tripId/visits')
+    findVisits(
+        @Param('tripId', ParseUUIDPipe) tripId: string,
+        @CurrentUser() user: AuthUser,
     ) {
-    return this.tripsService.delete(id, user.userId);
+        return this.visitsService.findByTrip(tripId, user.userId);
     }
 }
