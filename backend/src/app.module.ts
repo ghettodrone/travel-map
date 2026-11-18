@@ -8,6 +8,7 @@ import { UsersModule } from './users/users.module.js';
 import { AuthModule } from './auth/auth.module.js';
 import { TripsModule } from './trips/trips.module.js';
 import { PlacesModule } from './places/places.module.js';
+import { VisitsModule } from './visits/visits.module.js';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { PlacesModule } from './places/places.module.js';
     AuthModule,
     TripsModule,
     PlacesModule,
+    VisitsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
