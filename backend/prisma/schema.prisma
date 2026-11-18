@@ -11,15 +11,16 @@ datasource db {
 
 // User model
 model User {
-  id           String   @id @default(uuid()) @db.Uuid
-  email        String   @unique
+  id           String  @id @default(uuid()) @db.Uuid
+  email        String  @unique
   passwordHash String
   firstName    String
   lastName     String?
-  trips Trip[]
+  trips        Trip[]
+  places       Place[]
 
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 enum TripStatus {
@@ -27,6 +28,18 @@ enum TripStatus {
   UPCOMING
   ONGOING
   COMPLETED
+}
+
+enum PlaceCategory {
+  RESTAURANT
+  CAFE
+  HOTEL
+  MUSEUM
+  LANDMARK
+  PARK
+  BEACH
+  SHOP
+  OTHER
 }
 
 model Trip {
@@ -37,10 +50,59 @@ model Trip {
   endDate     DateTime
   status      TripStatus @default(PLANNING)
 
-  userId      String     @db.Uuid
-  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  visits Visit[]
+  routes Route[]
 
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
+  userId String @db.Uuid
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
+model Place {
+  id          String        @id @default(uuid()) @db.Uuid
+  name        String
+  description String?
+  latitude    Float
+  longitude   Float
+  category    PlaceCategory @default(OTHER)
+
+  userId String @db.Uuid
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  visits Visit[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Visit {
+  id        String   @id @default(uuid()) @db.Uuid
+  visitedAt DateTime @default(now())
+  notes     String?
+
+  placeId String @db.Uuid
+  place   Place  @relation(fields: [placeId], references: [id], onDelete: Cascade)
+
+  tripId String @db.Uuid
+  trip   Trip   @relation(fields: [tripId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Route {
+  id       String @id @default(uuid()) @db.Uuid
+  name     String
+  geometry Json
+
+  startedAt DateTime?
+  endedAt   DateTime?
+
+  tripId String @db.Uuid
+  trip   Trip   @relation(fields: [tripId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
