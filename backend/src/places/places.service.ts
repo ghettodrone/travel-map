@@ -115,4 +115,27 @@ export class PlacesService extends BaseCrudService {
             },
         });
     }
+
+    async delete(id: string, userId: string) {
+        await this.findOrThrow(
+            () =>
+            this.prisma.place.findFirst({
+                where: {
+                id,
+                userId,
+                },
+            }),
+            'Place not found',
+        );
+
+        await this.prisma.place.delete({
+            where: {
+            id,
+            },
+        });
+
+        return {
+            message: 'Place deleted successfully',
+        };
+    }
 }

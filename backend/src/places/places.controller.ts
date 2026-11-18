@@ -5,6 +5,7 @@ import {
   Post,
   Patch,
   UseGuards,
+  Delete,
   Param,
   ParseUUIDPipe,
 } from '@nestjs/common';
@@ -55,5 +56,13 @@ export class PlacesController {
             user.userId,
             updatePlaceDto,
         );
+    }
+
+    @Delete(':id')
+    remove(
+        @Param('id', new ParseUUIDPipe()) id: string,
+        @CurrentUser() user: AuthUser,
+        ) {
+        return this.placesService.delete(id, user.userId);
     }
 }
