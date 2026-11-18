@@ -3,14 +3,17 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
+import { BaseCrudService } from '../common/services/base-crud.service.js';
 
 import { PrismaService } from '../prisma/prisma.service.js';
 import { CreateTripDto } from './dto/create-trip.dto.js';
 import { UpdateTripDto } from './dto/update-trip.dto.js';
 
 @Injectable()
-export class TripsService {
-  constructor(private readonly prisma: PrismaService) {}
+export class TripsService extends BaseCrudService{
+  constructor(private readonly prisma: PrismaService) {
+    super();
+  }
 
   async create(createTripDto: CreateTripDto, userId: string) {
     const { title, description, startDate, endDate } = createTripDto;
@@ -51,24 +54,24 @@ export class TripsService {
     userId: string,
     updateTripDto: UpdateTripDto,
     ) {
-    const existingTrip = await this.prisma.trip.findFirst({
-        where: {
-        id,
-        userId,
-        },
-    });
+    const existingTrip = await this.findOrThrow(
+        () =>
+        this.prisma.trip.findFirst({
+            where: {
+            id,
+            userId,
+            },
+        }),
+        'Trip not found',
+    );
 
-    if (!existingTrip) {
-        throw new NotFoundException('Trip not found');
-    }
+  const startDate = updateTripDto.startDate
+    ? new Date(updateTripDto.startDate)
+    : existingTrip.startDate;
 
-    const startDate = updateTripDto.startDate
-        ? new Date(updateTripDto.startDate)
-        : existingTrip.startDate;
-
-    const endDate = updateTripDto.endDate
-        ? new Date(updateTripDto.endDate)
-        : existingTrip.endDate;
+  const endDate = updateTripDto.endDate
+    ? new Date(updateTripDto.endDate)
+    : existingTrip.endDate;
 
     if (endDate <= startDate) {
         throw new BadRequestException(
@@ -99,16 +102,16 @@ export class TripsService {
     }
 
     async delete(id: string, userId: string) {
-        const existingTrip = await this.prisma.trip.findFirst({
+        await this.findOrThrow(
+        () =>
+            this.prisma.trip.findFirst({
             where: {
-            id,
-            userId,
+                id,
+                userId,
             },
-        });
-
-        if (!existingTrip) {
-            throw new NotFoundException('Trip not found');
-        }
+            }),
+        'Trip not found',
+        );
 
         await this.prisma.trip.delete({
             where: {
@@ -121,47 +124,48 @@ export class TripsService {
         };
     }
 
-  async findAll(userId: string) {
-    return this.prisma.trip.findMany({
-        where: {
-        userId,
-        },
-        orderBy: {
-        createdAt: 'desc',
-        },
-        select: {
-        id: true,
-        title: true,
-        description: true,
-        startDate: true,
-        endDate: true,
-        status: true,
-        createdAt: true,
-        },
-    });
+    async findAll(userId: string) {
+        return this.executeFindAll(() =>
+            this.prisma.trip.findMany({
+            where: {
+                userId,
+            },
+            orderBy: {
+                createdAt: 'desc',
+            },
+            select: {
+                id: true,
+                title: true,
+                description: true,
+                startDate: true,
+                endDate: true,
+                status: true,
+                createdAt: true,
+                updatedAt: true,
+            },
+            }),
+        );
     }
 
     async findOne(id: string, userId: string) {
-        const trip = await this.prisma.trip.findFirst({
-            where: {
-            id,
-            userId,
-            },
-            select: {
-            id: true,
-            title: true,
-            description: true,
-            startDate: true,
-            endDate: true,
-            status: true,
-            createdAt: true,
-            },
-        });
-
-        if (!trip) {
-            throw new NotFoundException('Trip not found');
-        }
-
-        return trip;
+        return this.findOrThrow(
+            () =>
+            this.prisma.trip.findFirst({
+                where: {
+                id,
+                userId,
+                },
+                select: {
+                id: true,
+                title: true,
+                description: true,
+                startDate: true,
+                endDate: true,
+                status: true,
+                createdAt: true,
+                },
+            }),
+            'Trip not found',
+        );
     }
 }
