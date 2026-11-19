@@ -15,10 +15,141 @@
   </section>
 
   <section class="dashboard__stats">
-    <!-- Statistics will be here -->
+    <div class="dashboard__stat glass-panel">
+        <span class="dashboard__stat-label">TOTAL TRIPS</span>
+        <strong class="dashboard__stat-value">12</strong>
+        <span class="dashboard__stat-hint">Across 8 countries</span>
+    </div>
+
+    <div class="dashboard__stat glass-panel">
+        <span class="dashboard__stat-label">PLACES VISITED</span>
+        <strong class="dashboard__stat-value">38</strong>
+        <span class="dashboard__stat-hint">Your memories around the world</span>
+    </div>
+
+    <div class="dashboard__stat glass-panel">
+        <span class="dashboard__stat-label">COUNTRIES</span>
+        <strong class="dashboard__stat-value">8</strong>
+        <span class="dashboard__stat-hint">And many more to discover</span>
+    </div>
+
+    <div class="dashboard__stat glass-panel">
+        <span class="dashboard__stat-label">DISTANCE TRAVELED</span>
+        <strong class="dashboard__stat-value">24.8k</strong>
+        <span class="dashboard__stat-hint">Kilometers explored</span>
+    </div>
   </section>
 
   <section class="dashboard__content">
-    <!-- Upcoming trip and map will be here -->
+    <div class="dashboard__upcoming">
+        <div class="dashboard__upcoming-header">
+          <div>
+            <span class="dashboard__eyebrow">YOUR NEXT ADVENTURE</span>
+            <h3>Upcoming trip</h3>
+          </div>
+
+          <a href="#">View all trips <i class="pi pi-arrow-up-right"></i></a>
+        </div>
+
+        <article class="trip-card">
+          <div class="trip-card__image">
+            <img
+              src="/images/kyoto.jpg"
+              alt="Traditional Kyoto street in Japan"
+            />
+
+            <span class="trip-card__badge">UPCOMING</span>
+          </div>
+
+          <div class="trip-card__body">
+            <div class="trip-card__destination">
+              <div>
+                <h4>Kyoto, Japan</h4>
+                <span>Asia · Japan</span>
+              </div>
+
+              <i class="pi pi-map-marker"></i>
+            </div>
+
+            <div class="trip-card__details">
+              <div>
+                <i class="pi pi-calendar"></i>
+                <span>Apr 10 — Apr 20, 2027</span>
+              </div>
+
+              <div>
+                <i class="pi pi-clock"></i>
+                <span>10 days</span>
+              </div>
+            </div>
+
+            <div class="trip-card__footer">
+              <span>YOUR ADVENTURE AWAITS</span>
+              <a href="#">View details <i class="pi pi-arrow-right"></i></a>
+            </div>
+          </div>
+        </article>
+    </div>
+
+    <div class="dashboard__activity">
+      <div class="dashboard__activity-header">
+  <div>
+    <span class="dashboard__eyebrow">YOUR MEMORIES</span>
+    <h3>Recent activity</h3>
+  </div>
+
+  <a href="#">View all</a>
+</div>
+
+<div class="activity-list">
+    <article class="activity-item">
+      <img src="/images/ho-chi-minh.jpg" alt="Ho Chi Minh City" />
+
+      <div class="activity-item__info">
+        <h4>Ho Chi Minh City</h4>
+        <span>Vietnam</span>
+        <time datetime="2026-11-15">Nov 15, 2026</time>
+      </div>
+
+      <i class="pi pi-check-circle"></i>
+    </article>
+
+    <article class="activity-item">
+      <img src="/images/bangkok.jpg" alt="Bangkok" />
+
+      <div class="activity-item__info">
+        <h4>Bangkok</h4>
+        <span>Thailand</span>
+        <time datetime="2026-10-28">Oct 28, 2026</time>
+      </div>
+
+      <i class="pi pi-check-circle"></i>
+    </article>
+
+    <article class="activity-item">
+      <img src="/images/hanoi.jpg" alt="Hanoi" />
+
+      <div class="activity-item__info">
+        <h4>Hanoi</h4>
+        <span>Vietnam</span>
+        <time datetime="2026-10-12">Oct 12, 2026</time>
+      </div>
+
+      <i class="pi pi-check-circle"></i>
+    </article>
+
+    <article class="activity-item">
+      <img src="/images/da-nang.jpg" alt="Da Nang" />
+
+      <div class="activity-item__info">
+        <h4>Da Nang</h4>
+        <span>Vietnam</span>
+        <time datetime="2026-09-30">Sep 30, 2026</time>
+      </div>
+
+      <i class="pi pi-check-circle"></i>
+    </article>
+  </div>
+    </div>
   </section>
 </div>

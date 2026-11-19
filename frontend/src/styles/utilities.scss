@@ -5,6 +5,14 @@
   border-radius: var(--tm-radius-lg);
 }
 
+.glass-panel:hover {
+  //background: red;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--tm-glass-border);
+  backdrop-filter: blur(var(--tm-glass-blur));
+  border-radius: var(--tm-radius-lg);
+}
+
 .text-muted {
   color: var(--tm-color-text-secondary);
 }

@@ -6,11 +6,14 @@
   </div>
 
   <div class="header__actions">
-    <button class="header__icon-button" aria-label="Notifications">
+    <button class="header__icon-button" aria-label="Notifications" [pTooltip]="'Notifications'" tooltipPosition="top">
       <i class="pi pi-bell"></i>
     </button>
+    <button class="header__icon-button" aria-label="Language" [pTooltip]="'Change the language'" tooltipPosition="top">
+      <i class="pi pi-language" ></i>
+    </button>
 
-    <div class="header__profile">
+    <div class="header__profile ml-3">
       <div class="header__avatar">A</div>
 
       <div class="header__user-info">
