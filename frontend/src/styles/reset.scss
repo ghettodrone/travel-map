@@ -1,0 +1,22 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  color: var(--tm-color-text);
+  background: var(--tm-color-background);
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}

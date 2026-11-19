@@ -1,0 +1,67 @@
+:root {
+    --primary-color: var(--p-primary-color);
+    --primary-color-text: var(--p-primary-contrast-color);
+    --text-color: var(--p-text-color);
+    --text-color-secondary: var(--p-text-muted-color);
+    --surface-border: var(--p-content-border-color);
+    --surface-card: var(--p-content-background);
+    --surface-hover: var(--p-content-hover-background);
+    --surface-overlay: var(--p-overlay-popover-background);
+    --transition-duration: var(--p-transition-duration);
+    --maskbg: var(--p-mask-background);
+    --border-radius: var(--sd-radius);
+    --layout-section-transition-duration: 0.2s;
+    --focus-ring-shadow: var(--p-focus-ring-shadow);
+
+    // Design tokens редизайна каркаса (макет: тёмный сайдбар + синий топбар)
+    --sd-radius: 4px;                                  // общий радиус элементов интерфейса
+    --sd-radius-pill: var(--sd-radius);                 // радиус активного пункта меню
+    --sd-sidebar-width: 17rem;                         // ширина сайдбара (раскрытый)
+    --sd-sidebar-width-compact: 4.5rem;                // ширина сайдбара (свернутый)
+    --sd-topbar-height: 3.25rem;
+
+
+    --orange-50: var(--p-orange-50);
+    --orange-100: var(--p-orange-100);
+    --orange-200: var(--p-orange-200);
+    --orange-300: var(--p-orange-300);
+    --orange-400: var(--p-orange-400);
+    --orange-500: var(--p-orange-500);
+    --orange-600: var(--p-orange-600);
+    --orange-700: var(--p-orange-700);
+    --orange-800: var(--p-orange-800);
+    --orange-900: var(--p-orange-900);
+
+    --red-50: var(--p-red-50);
+    --red-100: var(--p-red-100);
+    --red-200: var(--p-red-200);
+    --red-300: var(--p-red-300);
+    --red-400: var(--p-red-400);
+    --red-500: var(--p-red-500);
+    --red-600: var(--p-red-600);
+    --red-700: var(--p-red-700);
+    --red-800: var(--p-red-800);
+    --red-900: var(--p-red-900);
+
+    --blue-50: var(--p-blue-50);
+    --blue-100: var(--p-blue-100);
+    --blue-200: var(--p-blue-200);
+    --blue-300: var(--p-blue-300);
+    --blue-400: var(--p-blue-400);
+    --blue-500: var(--p-blue-500);
+    --blue-600: var(--p-blue-600);
+    --blue-700: var(--p-blue-700);
+    --blue-800: var(--p-blue-800);
+    --blue-900: var(--p-blue-900);
+
+    --green-50: var(--p-green-50);
+    --green-100: var(--p-green-100);
+    --green-200: var(--p-green-200);
+    --green-300: var(--p-green-300);
+    --green-400: var(--p-green-400);
+    --green-500: var(--p-green-500);
+    --green-600: var(--p-green-600);
+    --green-700: var(--p-green-700);
+    --green-800: var(--p-green-800);
+    --green-900: var(--p-green-900);
+}

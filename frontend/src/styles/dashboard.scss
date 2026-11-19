@@ -1,0 +1,53 @@
+:host {
+  display: block;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.dashboard__welcome {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 220px;
+  padding: 40px;
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(15, 29, 22, 0.95) 0%,
+      rgba(15, 29, 22, 0.75) 55%,
+      rgba(15, 29, 22, 0.2) 100%
+    ),
+    url('/images/rice-terraces.jpg') center 45% / cover;
+
+  border: 1px solid var(--tm-color-border);
+  border-radius: var(--tm-radius-xl);
+}
+
+.dashboard__eyebrow {
+  color: var(--tm-color-primary);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+}
+
+.dashboard__welcome h2 {
+  margin: 14px 0 10px;
+  color: var(--tm-color-text);
+  font-size: 38px;
+  font-weight: 500;
+  letter-spacing: -1.5px;
+}
+
+.dashboard__welcome p {
+  max-width: 420px;
+  margin: 0;
+  color: var(--tm-color-text-secondary);
+  font-size: 14px;
+  line-height: 1.7;
+}

@@ -1,0 +1,35 @@
+:root {
+  // Colors
+  --tm-color-primary: #a5d6a7;
+  --tm-color-primary-dark: #477c53;
+
+  --tm-color-background: #17251e;
+  --tm-color-surface: rgba(25, 43, 34, 0.72);
+  --tm-color-surface-hover: rgba(44, 68, 52, 0.8);
+
+  --tm-color-text: #f4f6f1;
+  --tm-color-text-secondary: #bdc9bd;
+  --tm-color-border: rgba(255, 255, 255, 0.12);
+
+  // Glass
+  --tm-glass-background: rgba(24, 39, 31, 0.62);
+  --tm-glass-border: rgba(255, 255, 255, 0.14);
+  --tm-glass-blur: 16px;
+
+  // Radius
+  --tm-radius-sm: 10px;
+  --tm-radius-md: 16px;
+  --tm-radius-lg: 22px;
+  --tm-radius-xl: 28px;
+
+  // Spacing
+  --tm-spacing-xs: 4px;
+  --tm-spacing-sm: 8px;
+  --tm-spacing-md: 16px;
+  --tm-spacing-lg: 24px;
+  --tm-spacing-xl: 32px;
+
+  // Layout
+  --tm-sidebar-width: 240px;
+  --tm-header-height: 88px;
+}
