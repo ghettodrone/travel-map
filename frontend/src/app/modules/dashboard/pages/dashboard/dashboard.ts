@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { CardModule } from 'primeng/card';
+import { BadgeModule } from 'primeng/badge';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
-  imports: [CardModule],
+  imports: [BadgeModule, ButtonModule ],
   selector: 'app-dashboard',
   styleUrl: './dashboard.scss',
   templateUrl: './dashboard.html',

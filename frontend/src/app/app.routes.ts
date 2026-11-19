@@ -25,6 +25,12 @@ export const routes: Routes = [
             './modules/dashboard/pages/dashboard/dashboard'
           ).then((m) => m.Dashboard),
       },
+      {
+        path: 'trips',
+        loadChildren: () =>
+          import('./modules/trips/trips.routes')
+            .then((m) => m.tripsRoutes),
+      },
     ],
   },
   {

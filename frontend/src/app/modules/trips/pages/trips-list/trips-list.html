@@ -1,0 +1,26 @@
+<div class="trips-page">
+  <div class="trips-page__header">
+    <div>
+      <span class="trips-page__eyebrow">YOUR ADVENTURES</span>
+      <h2>My trips</h2>
+      <p>All your journeys in one place.</p>
+    </div>
+
+    <button class="trips-page__create">
+      <i class="pi pi-plus"></i>
+      Create trip
+    </button>
+  </div>
+
+  <div class="trips-list">
+    @for (trip of trips(); track trip.id) {
+      <div class="trip-item">
+        <h3>{{ trip.title }}</h3>
+        <p>{{ trip.description }}</p>
+        <span>{{ trip.status }}</span>
+      </div>
+    } @empty {
+      <p>No trips found.</p>
+    }
+  </div>
+</div>

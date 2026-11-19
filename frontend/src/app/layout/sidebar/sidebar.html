@@ -11,24 +11,23 @@
     <span class="sidebar__label">WORKSPACE</span>
 
     <nav class="sidebar__nav">
-      <a class="sidebar__link sidebar__link--active">
+      <a
+        class="sidebar__link"
+        routerLink="/travelMap/dashboard"
+        routerLinkActive="sidebar__link--active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
         <i class="pi pi-th-large"></i>
         <span>Dashboard</span>
       </a>
 
-      <a class="sidebar__link">
+      <a
+        class="sidebar__link"
+        routerLink="/travelMap/trips"
+        routerLinkActive="sidebar__link--active"
+      >
         <i class="pi pi-map"></i>
         <span>My trips</span>
-      </a>
-
-      <a class="sidebar__link">
-        <i class="pi pi-map-marker"></i>
-        <span>Places</span>
-      </a>
-
-      <a class="sidebar__link">
-        <i class="pi pi-globe"></i>
-        <span>Explore map</span>
       </a>
     </nav>
   </div>
