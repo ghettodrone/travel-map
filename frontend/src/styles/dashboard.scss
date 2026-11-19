@@ -10,23 +10,80 @@
 
 .dashboard__welcome {
   position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  > div:not(.dashboard__decorations) {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+.dashboard__decorations {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.travel-object {
+  position: absolute;
   display: flex;
   align-items: center;
-  min-height: 220px;
-  padding: 40px;
-  overflow: hidden;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 
-  background:
-    linear-gradient(
-      90deg,
-      rgba(15, 29, 22, 0.95) 0%,
-      rgba(15, 29, 22, 0.75) 55%,
-      rgba(15, 29, 22, 0.2) 100%
-    ),
-    url('/images/rice-terraces.jpg') center 45% / cover;
+  i {
+    font-size: 28px;
+  }
 
-  border: 1px solid var(--tm-color-border);
-  border-radius: var(--tm-radius-xl);
+  &--plane {
+    top: 20%;
+    right: 15%;
+    width: 64px;
+    height: 64px;
+    color: #d6e9d4;
+    background: rgba(165, 214, 167, 0.18);
+
+    i {
+      transform: rotate(-35deg);
+    }
+  }
+
+  &--compass {
+    top: 18%;
+    right: 42%;
+    width: 54px;
+    height: 54px;
+    color: #e2c99e;
+    background: rgba(214, 185, 138, 0.16);
+
+    i {
+      font-size: 26px;
+    }
+  }
+
+  &--location {
+    bottom: 20%;
+    right: 28%;
+    width: 48px;
+    height: 48px;
+    color: #c4dfd3;
+    background: rgba(157, 185, 176, 0.18);
+    border-radius: 50%;
+  }
+
+  &--suitcase {
+    bottom: 15%;
+    right: 8%;
+    width: 58px;
+    height: 58px;
+    color: #d9c3a5;
+    background: rgba(210, 185, 160, 0.16);
+  }
 }
 
 .dashboard__eyebrow {

@@ -1,26 +1,55 @@
+
 <div class="trips-page">
-  <div class="trips-page__header">
+  <header class="trips-page__header">
     <div>
       <span class="trips-page__eyebrow">YOUR ADVENTURES</span>
       <h2>My trips</h2>
-      <p>All your journeys in one place.</p>
+      <p>Explore your journeys around the world.</p>
     </div>
 
     <button class="trips-page__create">
       <i class="pi pi-plus"></i>
       Create trip
     </button>
-  </div>
+  </header>
 
-  <div class="trips-list">
-    @for (trip of trips(); track trip.id) {
-      <div class="trip-item">
-        <h3>{{ trip.title }}</h3>
-        <p>{{ trip.description }}</p>
-        <span>{{ trip.status }}</span>
+  <section class="trips-workspace">
+    <div class="trips-map">
+        <app-travel-map />
+    </div>
+
+    <aside class="trips-sidebar">
+      <div class="trips-sidebar__header">
+        <div>
+          <h3>Your journeys</h3>
+          <p>{{ trips().length }} adventures</p>
+        </div>
+
+        <button class="trips-sidebar__filter">
+          <i class="pi pi-sliders-h"></i>
+        </button>
       </div>
-    } @empty {
-      <p>No trips found.</p>
-    }
-  </div>
+
+      <div class="trips-sidebar__list">
+        @for (trip of trips(); track trip.id) {
+          <article class="trip-item">
+            <div class="trip-item__content">
+              <h4>{{ trip.title }}</h4>
+              <p>{{ trip.description }}</p>
+
+              <div class="trip-item__meta">
+                <span>{{ trip.startDate | date:'MMM d, yyyy' }}</span>
+                <span class="trip-item__status"
+                      [attr.data-status]="trip.status">
+                  {{ trip.status }}
+                </span>
+              </div>
+            </div>
+          </article>
+        } @empty {
+          <p>No trips found.</p>
+        }
+      </div>
+    </aside>
+  </section>
 </div>
